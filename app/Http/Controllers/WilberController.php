@@ -7,9 +7,9 @@ use Illuminate\Http\Request;
 class WilberController extends Controller
 {
 
-    public function getFullNameAttribute($value)
+    private function getFullNameAttribute($value)
     {
-       return ucfirst($this->first_name) . ' ' . ucfirst($this->last_name);
+       return ucfirst($value['first_name']) . ' ' . ucfirst($value['last_name']);
     }
 
     public function index()
@@ -23,11 +23,13 @@ class WilberController extends Controller
             return $b['age'] <=> $a['age'];
         });
 
+        // prepare emails
         $emails = [];
+
         // add name field
         foreach ($people['data'] as $key => $value) {
             $emails[] = $value['email'];
-            $people['data'][$key]['name'] = $value['first_name'] . ' ' . $value['last_name'];
+            $people['data'][$key]['name'] = $this->getFullNameAttribute($value);
         }
         
         echo "<h3>a comma-separated list of email addresses</h3>";
@@ -37,6 +39,5 @@ class WilberController extends Controller
         echo "<h3>the original data, sorted by age descending, with a new field on each record called 'name' which is the first and last name joined.</h3>";
 
         print_r($people);
-
     }
 }
