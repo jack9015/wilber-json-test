@@ -1,12 +1,24 @@
-# Instructions
+### Instructions
 
 ' $people = '{"data":[{"first_name":"jake","last_name":"bennett","age":31,"email":"jake@bennett.com","secret":"VXNlIHRoaXMgc2VjcmV0IHBocmFzZSBzb21ld2hlcmUgaW4geW91ciBjb2RlJ3MgY29tbWVudHM="},{"first_name":"jordon","last_name":"brill","age":85,"email": "jordon@brill.com","secret":"YWxidXF1ZXJxdWUuIHNub3JrZWwu"},]}'; '
 
-### Given the above JSON, build a simple PHP script to import it.
+1. Given the above JSON, build a simple PHP script to import it.
 
 Your script should create two variables:
 
 - ** a comma-separated list of email addresses
 - ** the original data, sorted by age descending, with a new field on each record called "name" which is the first and last name joined.
 
-### Please deliver your code in either a GitHub Gist or some other sort of web-hosted code snippet platform.
+2. How to run
+
+Clone the repository and run following commands.
+
+- `composer install` / `composer update`
+
+- `php artisan key:generate`
+
+- `php artisan serve`
+
+- Go to http://127.0.0.1:8000/ to check the result
+
+Enjoy the result :)
